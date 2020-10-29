@@ -1,26 +1,20 @@
 import React from 'react';
-//import { Media } from 'reactstrap';CardText, CardBody,
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
-import DishDetail from './DishdetailComponent';
-
 
 class Menu extends React.Component {
+
+    // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
-        this.state = {
-            selectedDish: null
-        }
-    }
-
-    onDishSelect(dish) {
-        this.setState({ selectedDish: dish});
     }
 
     render() {
+
         const menu = this.props.dishes.map(dish => {
             return (
                 <div key={dish.id} className="col-12 col-md-5 m-1">
-                    <Card onClick={() => this.onDishSelect(dish)}>
+                    <Card key={dish.id}
+                          onClick={() => this.props.onClick(dish.id)}>
                         <CardImg width="100%" src={dish.image} alt={dish.name} />
                         <CardImgOverlay className="ml-5">
                             <CardTitle>{dish.name}</CardTitle>
@@ -30,15 +24,10 @@ class Menu extends React.Component {
             );
         });
 
-
-
         return (
             <div className="container">
-                <div className="row" >
-                    {menu}
-                </div>
                 <div className="row">
-                    <DishDetail selectedDish={this.state.selectedDish} />
+                    {menu}
                 </div>
             </div>
         )
