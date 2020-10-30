@@ -1,26 +1,14 @@
 import React from 'react'
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, CardSubtitle, CardText, CardTitle, Media } from 'reactstrap'
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap'
 import { Link } from 'react-router-dom'
-
-function RenderCard({leader}) {
-    return (
-        <Card>
-            <CardBody>
-                <CardTitle>{leader.name}</CardTitle>
-                <CardSubtitle className="mb-2">{leader.designation}</CardSubtitle>
-                <CardText>{leader.description}</CardText>
-            </CardBody>
-        </Card>
-    )
-}
 
 function RenderLeader({leader}) {
     return (
         <Media>
-            <Media left href="">
-                <Media className="m-3" object src={leader.image} alt={leader.name}/>
+            <Media left className="col-2">
+                <Media object src={leader.image} alt={leader.name}/>
             </Media>
-            <Media body className="m-3">
+            <Media body className="col-10 mb-2">
                 <Media heading>{leader.name}</Media>
                 <p>{leader.designation}</p>
                 {leader.description}
