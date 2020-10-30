@@ -12,7 +12,7 @@ function RenderMenuItem({ dish, onClick }) {
                 </CardImgOverlay>
             </Link>
         </Card>
-    );
+    )
 }
 
 const Menu = (props) => {
@@ -21,8 +21,8 @@ const Menu = (props) => {
             <div key={dish.id} className="col-12 col-md-5 m-1">
                 <RenderMenuItem dish={dish} />
             </div>
-        );
-    });
+        )
+    })
 
     return (
         <div className="container">
