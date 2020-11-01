@@ -1,19 +1,8 @@
 import React, {Component} from 'react';
-import {
-    Card,
-    CardImg,
-    CardText,
-    CardTitle,
-    Breadcrumb,
-    BreadcrumbItem,
-    Button,
-    Col,
-    Row,
-    ModalHeader,
-    ModalBody, Label, Modal
-} from 'reactstrap'
+import {Card, CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem, Button, Col, Row, ModalHeader, ModalBody, Label, Modal} from 'reactstrap'
 import {Control, LocalForm, Errors} from "react-redux-form"
 import { Link } from 'react-router-dom'
+import { Loading } from './LoadingComponent'
 
 function RenderDish({dish}) {
     return (
@@ -52,7 +41,23 @@ function RenderComments({comments, addComment, dishId}) {
 }
 
 const DishDetail = (props) => {
-    if (props.dish != null) {
+    if (props.isLoading) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
+        )
+    } else if (props.errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        )
+    } else if (props.dish != null) {
         console.log('DishDetail Component render invoked');
         return (
             <div className="container">
@@ -63,7 +68,7 @@ const DishDetail = (props) => {
                     </Breadcrumb>
                     <div className="col-12">
                         <h3>{props.dish.name}</h3>
-                        <hr />
+                        <hr/>
                     </div>
                 </div>
                 <div className="row">
@@ -72,8 +77,7 @@ const DishDetail = (props) => {
                 </div>
             </div>
         );
-    }
-    else {
+    } else {
         return (
             <div></div>
         )
