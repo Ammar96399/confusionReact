@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {Card, CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem, Button, Col, Row, ModalHeader, ModalBody, Label, Modal} from 'reactstrap'
 import {Control, LocalForm, Errors} from "react-redux-form"
 import { Link } from 'react-router-dom'
 import { Loading } from './LoadingComponent'
+import { baseUrl } from "../shared/baseUrl"
 
 function RenderDish({dish}) {
     return (
         <Card className="col-12 col-md-5 m-1">
-            <CardImg width="100%" src={dish.image} alt={dish.name}/>
+            <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name}/>
             <CardTitle>{dish.name}</CardTitle>
             <CardText>{dish.description}</CardText>
         </Card>
